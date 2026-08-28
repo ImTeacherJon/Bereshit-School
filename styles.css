@@ -175,6 +175,12 @@ nav.primary a:hover, nav.primary a[aria-current="page"]{ background:rgba(255,255
   content:""; position:absolute; top:16px; left:-20px; width:50px; height:10px; background:var(--talavera-d);
   border-radius:2px;
 }
+.arch-shape img{
+  width:100%; height:100%; object-fit:cover; border-radius:inherit; display:block;
+}
+.card-art img{
+  width:100%; height:100%; object-fit:cover; border-radius:inherit; display:block;
+}
 .hero-badge{
   position:absolute; bottom:6%; left:50%; transform:translateX(-50%);
   background:#fff; color:var(--talavera-d); font-family:var(--display); font-weight:600;
@@ -209,6 +215,7 @@ section{ padding:88px 0; }
   height:150px; margin:22px auto 0; width:82%;
   border-radius:50% 50% 4px 4px / 30% 30% 4px 4px;
   display:flex; align-items:center; justify-content:center; font-size:2.1rem;
+  overflow:hidden;
 }
 .card-body{ padding:18px 26px 28px; text-align:center; flex:1; display:flex; flex-direction:column; }
 .card-body h3{ font-size:1.18rem; color:var(--talavera-d); }
@@ -236,6 +243,16 @@ section{ padding:88px 0; }
   border-radius:50% 50% 8px 8px / 20% 20% 8px 8px; aspect-ratio:4/3.4;
   display:flex; align-items:center; justify-content:center; font-size:3rem;
 }
+
+/* ================= PHOTO GALLERY GRID ================= */
+.photo-grid{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+}
+.photo-grid img{
+  width:100%; height:230px; object-fit:cover; border-radius:12px;
+  box-shadow:0 10px 26px -16px rgba(20,52,58,.4);
+}
+@media (max-width:760px){ .photo-grid{ grid-template-columns:1fr 1fr; } .photo-grid img{ height:170px; } }
 
 /* ================= LIST / STEP STYLES ================= */
 .step-list{ counter-reset:step; display:grid; gap:22px; }
