@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admisiones — Bereshit Christian School</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="announce">Inscripciones abiertas para el ciclo escolar &nbsp;·&nbsp; <a href="#proceso">Ver el proceso completo</a></div>
+
+<header class="site">
+  <div class="nav-row">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">B</span>
+      <span class="brand-text"><strong>Bereshit</strong><span>Christian School</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Abrir menú" onclick="document.querySelector('nav.primary').classList.toggle('open')">☰</button>
+    <nav class="primary">
+      <a href="index.html">Inicio</a>
+      <a href="sobre-nosotros.html">Nosotros</a>
+      <a href="metodo-educativo.html">Método A.C.E.</a>
+      <a href="oferta-educativa.html">Programas</a>
+      <a href="vida-escolar.html">Vida Escolar</a>
+      <a href="apoya-ministerio.html">Apóyanos</a>
+      <a href="contacto.html">Contacto</a>
+      <a href="admisiones.html" class="nav-cta" aria-current="page">Admisiones</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="wrap">
+    <p class="breadcrumb"><a href="index.html">Inicio</a> / Admisiones</p>
+    <p class="eyebrow">Nuevas familias</p>
+    <h1>Un proceso claro, paso a paso</h1>
+    <p>Te acompañamos desde la primera plática hasta el primer día de clases.</p>
+  </div>
+</div>
+
+<section id="proceso">
+  <div class="wrap content-narrow">
+    <h2>Proceso de admisión</h2>
+
+    <p class="eyebrow" style="margin-top:10px">Etapa 1 · Primer acercamiento</p>
+    <div class="step-list" style="margin-top:14px">
+      <div class="step"><div class="step-num"></div><div><h4>Primera entrevista</h4><p>Te explicamos nuestro programa y modelo educativo a detalle.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h4>Inversión educativa</h4><p>Compartimos contigo los costos de inscripción, materiales y colegiatura.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h4>Agenda tu examen diagnóstico</h4><p>Programamos la cita y te damos recomendaciones para presentarlo.</p></div></div>
+    </div>
+
+    <p class="eyebrow" style="margin-top:34px">Etapa 2 · Evaluación del alumno</p>
+    <div class="step-list" style="margin-top:14px">
+      <div class="step"><div class="step-num"></div><div><h4>Entrevista con el alumno</h4><p>Conocemos al futuro estudiante de forma directa.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h4>Examen diagnóstico</h4><p>El alumno presenta el examen en la escuela. Esto nos permite conocer su nivel de madurez y el nivel de currículo en el que puede desarrollarse mejor.</p></div></div>
+    </div>
+
+    <p class="eyebrow" style="margin-top:34px">Etapa 3 · Inscripción</p>
+    <div class="step-list" style="margin-top:14px">
+      <div class="step"><div class="step-num"></div><div><h4>Entrega de resultados</h4><p>Compartimos con los padres los resultados del examen diagnóstico.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h4>Requisitos y solicitud</h4><p>Completa la solicitud de inscripción y entrega la documentación requerida.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h4>Pagos</h4><p>Inscripción, materiales y uniforme escolar.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h4>Lista de útiles y firmas</h4><p>Te compartimos la lista de útiles escolares y firmamos los documentos importantes.</p></div></div>
+    </div>
+
+    <p class="eyebrow" style="margin-top:34px">Etapa 4 · Bienvenida</p>
+    <div class="step-list" style="margin-top:14px">
+      <div class="step"><div class="step-num"></div><div><h4>Orientación para padres</h4><p>Una sesión introductoria sobre el sistema PACE y cómo apoyar a tu hijo en casa.</p></div></div>
+      <div class="step"><div class="step-num"></div><div><h4>Calendario escolar</h4><p>Recibes el calendario completo del ciclo escolar.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--paper); padding-top:0;">
+  <div class="wrap content-narrow">
+    <h2>Solicita información</h2>
+    <p>Completa el formulario y nos pondremos en contacto contigo para agendar la primera entrevista.</p>
+    <form class="form-card">
+      <div class="form-row">
+        <label for="nombre">Nombre del padre, madre o tutor</label>
+        <input id="nombre" type="text" placeholder="Tu nombre completo">
+      </div>
+      <div class="form-row">
+        <label for="alumno">Nombre y edad del futuro alumno</label>
+        <input id="alumno" type="text" placeholder="Nombre y edad">
+      </div>
+      <div class="form-row">
+        <label for="tel">Teléfono</label>
+        <input id="tel" type="tel" placeholder="415 000 0000">
+      </div>
+      <div class="form-row">
+        <label for="email">Correo electrónico</label>
+        <input id="email" type="email" placeholder="tu@correo.com">
+      </div>
+      <div class="form-row">
+        <label for="msg">Cuéntanos un poco sobre tu familia</label>
+        <textarea id="msg" placeholder="Escribe aquí..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-teal">Enviar solicitud</button>
+    </form>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4 style="color:var(--gold)">Bereshit Christian School</h4>
+        <p style="color:#C9C1AE;font-size:.92rem;max-width:32ch;">Educación cristiana bilingüe con el método A.C.E., en San Miguel de Allende, Guanajuato.</p>
+        <div class="social-row" style="margin-top:14px;">
+          <a href="https://www.facebook.com/Bereshit.Christian.School/" aria-label="Facebook">f</a>
+          <a href="https://instagram.com/bereshit.christian.school" aria-label="Instagram">◎</a>
+        </div>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <a href="sobre-nosotros.html">Nosotros</a>
+        <a href="metodo-educativo.html">Método A.C.E.</a>
+        <a href="oferta-educativa.html">Programas</a>
+        <a href="admisiones.html">Admisiones</a>
+      </div>
+      <div>
+        <h4>Comunidad</h4>
+        <a href="vida-escolar.html">Vida Escolar</a>
+        <a href="apoya-ministerio.html">Apóyanos</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <a href="mailto:bereshitchs.snm@gmail.com">bereshitchs.snm@gmail.com</a>
+        <a href="tel:4151330051">415 133 0051</a>
+        <a href="#">Fray Pedro de Gante 42, Providencia, San Miguel de Allende</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Bereshit Christian School — Todos los derechos reservados.</span>
+      <span>Sitio en construcción · versión en inglés próximamente</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
