@@ -73,12 +73,13 @@ header.site{
 }
 .brand{ display:flex; align-items:center; gap:12px; color:#fff; }
 .brand-mark{
-  width:44px; height:44px; border-radius:50% 50% 50% 4px;
-  background:linear-gradient(155deg, var(--gold), var(--terracotta));
+  width:46px; height:46px; border-radius:10px;
+  background:var(--paper-2);
   display:flex; align-items:center; justify-content:center;
-  font-family:var(--display); font-weight:700; color:var(--talavera-d); font-size:1.1rem;
+  padding:5px;
   flex:none;
 }
+.brand-mark img{ width:100%; height:100%; object-fit:contain; }
 .brand-text{ display:flex; flex-direction:column; line-height:1.15; }
 .brand-text strong{ font-family:var(--display); font-size:1.08rem; letter-spacing:.01em; }
 .brand-text span{ font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); }
