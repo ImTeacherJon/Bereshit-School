@@ -73,7 +73,7 @@ header.site{
 }
 .brand{ display:flex; align-items:center; gap:12px; color:#fff; }
 .brand-mark{
-  width:46px; height:46px;
+  width:68px; height:68px;
   display:flex; align-items:center; justify-content:center;
   flex:none;
 }
@@ -128,6 +128,16 @@ nav.primary a:hover, nav.primary a[aria-current="page"]{ background:rgba(255,255
   border-left:2px solid var(--gold); padding-left:16px; margin:22px 0 30px;
 }
 .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; }
+
+@media (max-width: 860px){
+  .hero{ padding-top:24px; }
+  .hero-grid{ grid-template-columns:1fr; gap:36px; padding-bottom:48px; }
+  .hero-art{ height:300px; margin-top:8px; }
+  .hero-badge{ font-size:.78rem; padding:9px 16px; white-space:normal; text-align:center; max-width:88%; }
+}
+@media (max-width: 480px){
+  .hero-art{ height:260px; }
+}
 .btn{
   display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:.92rem;
   padding:14px 26px; border-radius:999px; border:2px solid transparent; cursor:pointer;
