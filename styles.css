@@ -309,7 +309,8 @@ footer.site a{ display:block; color:#C9C1AE; font-size:.92rem; padding:5px 0; }
 footer.site a:hover{ color:var(--gold); }
 .foot-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top:22px; flex-wrap:wrap; gap:10px; font-size:.82rem; color:#9E9683; }
 .social-row{ display:flex; gap:12px; }
-.social-row a{ width:36px; height:36px; border-radius:50%; border:1px solid rgba(255,255,255,.2); display:flex; align-items:center; justify-content:center; padding:0; }
+.social-row a{ width:36px; height:36px; border-radius:50%; border:1px solid rgba(255,255,255,.2); display:flex; align-items:center; justify-content:center; padding:0; overflow:hidden; }
+.social-row a img{ width:100%; height:100%; object-fit:cover; }
 .social-row a:hover{ border-color:var(--gold); }
 
 /* ================= PAGE HEADER (interior pages) ================= */
