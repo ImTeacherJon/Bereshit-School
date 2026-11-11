@@ -3,13 +3,940 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bereshit Christian School — Educación cristiana en San Miguel de Allende</title>
+<title>Bereshit Christian School — Educación cristiana bilingüe en San Miguel de Allende</title>
 <meta name="description" content="Bereshit Christian School: escuela cristiana bilingüe con el método A.C.E. en San Miguel de Allende, Guanajuato. Kínder a Preparatoria, doble certificación México/EE.UU.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  :root {
+    --navy: #182842;
+    --navy-light: #243B61;
+    --gold: #D4AF37;
+    --gold-bright: #E5C158;
+    --gold-soft: #F9F3DF;
+    --terracotta: #C85A32;
+    --teal: #1E6B7B;
+    --paper: #F6F3EC;
+    --cream: #FCFBF8;
+    --ink: #23201B;
+    --muted: #5A5245;
+    --border: rgba(24, 40, 66, 0.12);
+    --shadow-sm: 0 6px 20px rgba(24, 40, 66, 0.06);
+    --shadow-md: 0 14px 36px rgba(24, 40, 66, 0.11);
+    --radius: 18px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, .serif-heading {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    line-height: 1.15;
+    color: var(--navy);
+  }
+  a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+  /* Animación al hacer scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---------- BARRA DE ANUNCIO SUPERIOR ---------- */
+  .announce {
+    background: var(--navy);
+    color: #fff;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    border-bottom: 2px solid var(--gold);
+  }
+  .announce span.badge-pill {
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    margin-right: 8px;
+    letter-spacing: 0.6px;
+  }
+  .announce a {
+    color: var(--gold-bright);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .announce a:hover { color: #fff; }
+
+  /* ---------- HEADER & NAVEGACIÓN ---------- */
+  header.site {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(252, 251, 248, 0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  }
+  .nav-row {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand-mark img {
+    height: 54px;
+    width: auto;
+    transition: transform 0.25s ease;
+  }
+  .brand:hover .brand-mark img { transform: scale(1.05); }
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+  .brand-text strong {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.3px;
+  }
+  .brand-text span {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  nav.primary {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+  nav.primary a {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--navy);
+    padding: 6px 2px;
+    position: relative;
+  }
+  nav.primary a:not(.nav-cta)::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.22s ease;
+  }
+  nav.primary a:not(.nav-cta):hover::after,
+  nav.primary a[aria-current="page"]::after {
+    width: 100%;
+  }
+  nav.primary a.nav-cta {
+    background: var(--navy);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 100px;
+    border: 2px solid var(--navy);
+    box-shadow: 0 4px 12px rgba(24, 40, 66, 0.18);
+  }
+  nav.primary a.nav-cta:hover {
+    background: var(--gold);
+    color: var(--navy);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 1.3rem;
+    color: var(--navy);
+    cursor: pointer;
+  }
+
+  /* ---------- BOTONES Y ELEMENTOS COMUNES ---------- */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--terracotta);
+    margin: 0 0 10px;
+  }
+  .eyebrow::before {
+    content: "✦";
+    color: var(--gold);
+    font-size: 0.9rem;
+  }
+  .eyebrow.on-dark { color: var(--gold-bright); }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 14px 26px;
+    border-radius: 100px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-gold {
+    background: var(--gold);
+    color: var(--navy);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.32);
+  }
+  .btn-gold:hover { background: var(--gold-bright); }
+  .btn-outline {
+    border-color: rgba(255, 255, 255, 0.45);
+    color: #fff;
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .btn-outline:hover {
+    background: #fff;
+    color: var(--navy);
+  }
+  .btn-navy {
+    background: var(--navy);
+    color: #fff;
+    box-shadow: var(--shadow-sm);
+  }
+  .btn-navy:hover { background: var(--navy-light); }
+  .btn-teal {
+    background: var(--teal);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(30, 107, 123, 0.25);
+  }
+  .btn-teal:hover { background: #165461; }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #101C30 100%);
+    color: #fff;
+    padding: 72px 24px 84px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.15), transparent 45%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 54px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .hero h1 {
+    color: #fff;
+    font-size: clamp(2.4rem, 4.4vw, 3.7rem);
+    margin: 0 0 18px;
+    font-weight: 700;
+  }
+  .hero h1 em {
+    color: var(--gold-bright);
+    font-style: italic;
+  }
+  .hero-verse {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--gold-soft);
+    border-left: 3px solid var(--gold);
+    padding-left: 16px;
+    margin: 0 0 20px;
+  }
+  .hero .lead {
+    font-size: 1.06rem;
+    color: rgba(255, 255, 255, 0.88);
+    margin: 0 0 28px;
+    max-width: 58ch;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 26px;
+  }
+  .hero-highlights {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 0.86rem;
+    color: rgba(255, 255, 255, 0.82);
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+  }
+  .hero-highlights span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hero-art {
+    position: relative;
+  }
+  .arch-shape {
+    border-radius: 180px 180px 24px 24px;
+    overflow: hidden;
+    border: 4px solid var(--gold);
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+    aspect-ratio: 4/3.6;
+  }
+  .arch-shape img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-badge {
+    position: absolute;
+    bottom: -16px;
+    left: 24px;
+    background: #fff;
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 12px 20px;
+    border-radius: 100px;
+    box-shadow: var(--shadow-md);
+    border: 2px solid var(--gold);
+  }
+
+  /* ---------- TRUST BAR ---------- */
+  .trust {
+    background: var(--gold-soft);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 36px 0;
+  }
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    text-align: center;
+  }
+  .trust-item {
+    padding: 10px 14px;
+  }
+  .trust-item .num {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 2.7rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .trust-item .lab {
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* ---------- SECCIONES GENERALES ---------- */
+  section { padding: 84px 0; }
+  .section-head {
+    max-width: 680px;
+    margin: 0 auto 48px;
+    text-align: center;
+  }
+  .section-head h2 {
+    font-size: clamp(2rem, 3.4vw, 2.85rem);
+    margin: 0 0 14px;
+  }
+  .section-head p {
+    color: var(--muted);
+    font-size: 1.04rem;
+    margin: 0;
+  }
+
+  /* ---------- EXPLORADOR INTERACTIVO DE NIVELES (PARA PAPÁS) ---------- */
+  .levels-section {
+    background: var(--paper);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .level-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+  .level-tab {
+    background: #fff;
+    border: 2px solid var(--border);
+    color: var(--navy);
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 12px 24px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .level-tab:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+  .level-tab.active {
+    background: var(--navy);
+    color: #fff;
+    border-color: var(--navy);
+    box-shadow: var(--shadow-sm);
+  }
+  .level-panel {
+    display: none;
+    background: #fff;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    grid-template-columns: 1fr 1.1fr;
+    animation: fadeIn 0.35s ease;
+  }
+  .level-panel.active { display: grid; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .level-img {
+    min-height: 340px;
+    position: relative;
+  }
+  .level-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .level-badge {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    background: var(--navy);
+    color: var(--gold-bright);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+  .level-content {
+    padding: 40px 38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .level-content h3 {
+    font-size: 2rem;
+    margin: 0 0 12px;
+  }
+  .level-content p {
+    color: var(--muted);
+    margin: 0 0 20px;
+  }
+  .level-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 26px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .level-features li {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .level-features li::before {
+    content: "✓";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--gold-soft);
+    color: var(--terracotta);
+    font-weight: 800;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  /* ---------- TARJETAS (CARDS) ---------- */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .card {
+    background: #fff;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+  }
+  .card-art {
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    position: relative;
+  }
+  .card-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .card:hover .card-art img { transform: scale(1.05); }
+  .card-body {
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .card-body h3 {
+    font-size: 1.55rem;
+    margin: 0 0 10px;
+  }
+  .card-body p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin: 0 0 20px;
+    flex: 1;
+  }
+  .card-link {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--teal);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .card-link::after {
+    content: "→";
+    transition: transform 0.2s ease;
+  }
+  .card:hover .card-link::after { transform: translateX(4px); }
+
+  /* ---------- BANDA DE VERSÍCULO ---------- */
+  .verse-band {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: #fff;
+    text-align: center;
+    padding: 64px 24px;
+    position: relative;
+  }
+  .verse-band .verse {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+    font-style: italic;
+    max-width: 820px;
+    margin: 0 auto 12px;
+    color: var(--gold-soft);
+  }
+  .verse-band .ref {
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: var(--gold);
+    margin: 0;
+  }
+
+  /* ---------- RUTA DE ADMISIÓN EN 4 PASOS ---------- */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    margin-top: 40px;
+  }
+  .step-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 22px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .step-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+  }
+  .step-num {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--gold-soft);
+    color: var(--navy);
+    border: 2px solid var(--gold);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .step-card h3 {
+    font-size: 1.35rem;
+    margin: 0 0 8px;
+  }
+  .step-card p {
+    font-size: 0.92rem;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* ---------- PREGUNTAS FRECUENTES DE PAPÁS (ACORDEÓN) ---------- */
+  .faq-list {
+    max-width: 820px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .faq-item {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 20px 24px;
+    text-align: left;
+    font-family: inherit;
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--navy);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+  }
+  .faq-question:hover { color: var(--teal); }
+  .faq-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--paper);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: transform 0.25s ease, background 0.25s ease;
+    flex-shrink: 0;
+  }
+  .faq-item.open .faq-icon {
+    transform: rotate(45deg);
+    background: var(--gold);
+    color: var(--navy);
+  }
+  .faq-answer {
+    display: none;
+    padding: 0 24px 20px;
+    color: var(--muted);
+    font-size: 0.96rem;
+    border-top: 1px solid rgba(0,0,0,0.04);
+  }
+  .faq-item.open .faq-answer { display: block; }
+
+  /* ---------- SECCIÓN ALCANCE / SPLIT ---------- */
+  .split {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 48px;
+    align-items: center;
+    background: #fff;
+    padding: 44px;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+  }
+  .split .art {
+    background: linear-gradient(135deg, var(--gold-soft), #EFE6C9);
+    border-radius: 20px;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 4.2rem;
+    border: 2px dashed var(--gold);
+    padding: 24px;
+    text-align: center;
+  }
+  .split .art span {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-top: 10px;
+  }
+
+  /* ---------- BANDA CTA FINAL ---------- */
+  .cta-band {
+    background: linear-gradient(135deg, var(--terracotta) 0%, #A94420 100%);
+    color: #fff;
+    border-radius: 24px;
+    padding: 44px 48px;
+    margin: 0 auto 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    flex-wrap: wrap;
+    box-shadow: 0 18px 40px rgba(200, 90, 50, 0.25);
+  }
+  .cta-band h2 {
+    color: #fff;
+    font-size: 2.2rem;
+    margin: 0 0 6px;
+  }
+  .cta-band p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 1.02rem;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer.site {
+    background: var(--navy);
+    color: #E2DDD2;
+    padding: 64px 0 28px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1.3fr;
+    gap: 36px;
+    padding-bottom: 44px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .footer-grid h4 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.3rem;
+    color: var(--gold-bright);
+    margin: 0 0 14px;
+  }
+  .footer-grid a {
+    display: block;
+    color: #C9C1AE;
+    font-size: 0.92rem;
+    margin-bottom: 9px;
+  }
+  .footer-grid a:hover { color: #fff; transform: translateX(3px); }
+  .social-row {
+    display: flex;
+    gap: 12px;
+  }
+  .social-row a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px;
+  }
+  .social-row a:hover {
+    background: var(--gold);
+    transform: translateY(-2px);
+  }
+  .foot-bottom {
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.85rem;
+    color: #9E9689;
+  }
+
+  /* ---------- BOTÓN FLOTANTE Y MODAL DE CITA PARA PAPÁS ---------- */
+  .floating-visit-btn {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    z-index: 120;
+    background: var(--navy);
+    color: #fff;
+    border: 2px solid var(--gold);
+    border-radius: 100px;
+    padding: 12px 22px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.92rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    box-shadow: 0 12px 28px rgba(24, 40, 66, 0.32);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .floating-visit-btn:hover {
+    transform: translateY(-3px);
+    background: var(--navy-light);
+  }
+  .visit-modal-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 250;
+    background: rgba(16, 28, 48, 0.72);
+    backdrop-filter: blur(4px);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .visit-modal-backdrop.open { display: flex; }
+  .visit-modal {
+    background: #fff;
+    width: min(490px, 95vw);
+    border-radius: 22px;
+    padding: 32px 28px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+    border-top: 6px solid var(--gold);
+    animation: fadeIn 0.22s ease;
+  }
+  .vm-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+  .vm-head h3 { font-size: 1.75rem; margin: 0; }
+  .vm-close {
+    background: var(--paper);
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--navy);
+  }
+  .vm-field { margin-bottom: 14px; }
+  .vm-field label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 5px;
+  }
+  .vm-field input, .vm-field select, .vm-field textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.94rem;
+    background: var(--cream);
+  }
+  .vm-field input:focus, .vm-field select:focus, .vm-field textarea:focus {
+    outline: none;
+    border-color: var(--teal);
+    background: #fff;
+  }
+  .vm-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+  .vm-actions button { flex: 1; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 920px) {
+    .nav-toggle { display: block; }
+    nav.primary {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      flex-direction: column;
+      padding: 20px 24px;
+      border-bottom: 2px solid var(--gold);
+      box-shadow: var(--shadow-md);
+    }
+    nav.primary.open { display: flex; }
+    .hero-grid, .level-panel.active, .split { grid-template-columns: 1fr; }
+    .trust-grid, .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    .card-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .trust-grid, .steps-grid, .footer-grid, .level-features { grid-template-columns: 1fr; }
+    .cta-band { padding: 32px 24px; text-align: center; justify-content: center; }
+  }
+</style>
 </head>
 <body>
 
-<div class="announce">Inscripciones abiertas para el ciclo escolar &nbsp;·&nbsp; <a href="admisiones.html">Conoce el proceso de admisión</a></div>
+<div class="announce">
+  <span class="badge-pill">Admisiones Abiertas</span>
+  Inscripciones abiertas para el ciclo escolar en San Miguel de Allende &nbsp;·&nbsp;
+  <a href="admisiones.html">Conoce el proceso de admisión</a> o <a href="#agendar" id="topScheduleLink">agenda una visita guiada</a>
+</div>
 
 <header class="site">
   <div class="nav-row">
@@ -37,17 +964,22 @@
       <p class="eyebrow on-dark">San Miguel de Allende, Guanajuato · Desde 2013</p>
       <h1>Formando niños y jóvenes <em>a través de la Palabra de Dios</em></h1>
       <p class="hero-verse">"Todo lo puedo en Cristo que me fortalece."<br>— Filipenses 4:13</p>
-      <p class="lead">Bereshit Christian School es un centro educativo cristiano bilingüe que acompaña a familias con el programa A.C.E. (Accelerated Christian Education), formando el carácter y el conocimiento de cada alumno de Kínder a Preparatoria.</p>
+      <p class="lead">Bereshit Christian School es un centro educativo cristiano bilingüe que acompaña a las familias con el programa internacional <strong>A.C.E. (Accelerated Christian Education)</strong>, edificando el carácter cristiano y la excelencia académica de Kínder a Preparatoria.</p>
       <div class="hero-actions">
-        <a href="admisiones.html" class="btn btn-gold">Solicitar admisión</a>
-        <a href="sobre-nosotros.html" class="btn btn-outline">Conoce nuestra historia</a>
+        <button type="button" class="btn btn-gold" id="heroScheduleBtn">📅 Agendar visita o pedir informes</button>
+        <a href="admisiones.html" class="btn btn-outline">Ver proceso de admisión</a>
+      </div>
+      <div class="hero-highlights">
+        <span>🎓 Kínder a Preparatoria</span>
+        <span>🌎 Educación Bilingüe (Español / Inglés)</span>
+        <span>📜 Doble Certificación MX · EE. UU.</span>
       </div>
     </div>
     <div class="hero-art">
       <div class="arch-shape">
         <img src="grupo-completo.jpeg" alt="Alumnos y maestros de Bereshit Christian School, generación 2025-2026">
       </div>
-      <div class="hero-badge">✦ 12 años sirviendo a familias</div>
+      <div class="hero-badge">✦ 12+ años sirviendo a las familias</div>
     </div>
   </div>
 </section>
@@ -59,29 +991,136 @@
       <div class="lab">Años de trayectoria formando familias desde 2013</div>
     </div>
     <div class="trust-item">
-      <div class="num">140</div>
-      <div class="lab">Países donde se usa el currículo A.C.E.</div>
+      <div class="num">140+</div>
+      <div class="lab">Países donde opera el currículo internacional A.C.E.</div>
     </div>
     <div class="trust-item">
       <div class="num">MX·US</div>
-      <div class="lab">Doble certificación — Preparatoria con Dual Enrollment</div>
+      <div class="lab">Doble certificación y Preparatoria con Dual Enrollment</div>
+    </div>
+    <div class="trust-item">
+      <div class="num">100%</div>
+      <div class="lab">Atención personalizada al ritmo y dominio de cada alumno</div>
     </div>
   </div>
 </div>
 
+<!-- NUEVA SECCIÓN DINÁMICA: EXPLORADOR DE NIVELES PARA PAPÁS -->
+<section class="levels-section" id="niveles">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Oferta Educativa</p>
+      <h2>¿Qué etapa cursará tu hijo?</h2>
+      <p>Selecciona el nivel educativo para conocer cómo acompañamos el crecimiento espiritual, académico y bilingüe de tus hijos en cada etapa.</p>
+    </div>
+
+    <div class="level-tabs reveal" role="tablist" aria-label="Niveles educativos">
+      <button class="level-tab active" data-level="preescolar" role="tab">🌱 Preescolar (Kínder)</button>
+      <button class="level-tab" data-level="primaria" role="tab">📘 Primaria</button>
+      <button class="level-tab" data-level="secundaria" role="tab">🔬 Secundaria y Preparatoria</button>
+      <button class="level-tab" data-level="metodo" role="tab">⭐ El Sistema A.C.E.</button>
+    </div>
+
+    <!-- Panel Preescolar -->
+    <div class="level-panel active" id="panel-preescolar">
+      <div class="level-img">
+        <span class="level-badge">3 a 5 años · Cimientos sólidos</span>
+        <img src="grupo-preescolar.jpeg" alt="Alumnos de preescolar de Bereshit Christian School">
+      </div>
+      <div class="level-content">
+        <h3>Preescolar: Despertando el amor por aprender</h3>
+        <p>En sus primeros años, los niños aprenden en un ambiente seguro, alegre y lleno de afecto cristiano. Desarrollamos su preparación para la lectoescritura y el inglés de forma natural mediante cantos, historias bíblicas y coordinación motriz.</p>
+        <ul class="level-features">
+          <li>Inmersión temprana al inglés</li>
+          <li>Programa ABCs with Ace and Christi</li>
+          <li>Principios y valores bíblicos diarios</li>
+          <li>Grupos reducidos y trato maternal</li>
+        </ul>
+        <div>
+          <a href="oferta-educativa.html" class="btn btn-navy">Conocer Preescolar a detalle</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel Primaria -->
+    <div class="level-panel" id="panel-primaria">
+      <div class="level-img">
+        <span class="level-badge">6 a 11 años · Dominio y carácter</span>
+        <img src="grupo-primaria.jpeg" alt="Alumnos de primaria de Bereshit Christian School">
+      </div>
+      <div class="level-content">
+        <h3>Primaria: Hábitos firmes y aprendizaje sin lagunas</h3>
+        <p>Cada alumno avanza sobre bases firmes: ningún niño pasa al siguiente tema sin haber comprendido y dominado el anterior. Fomentamos la responsabilidad personal, el establecimiento de metas diarias y el dominio progresivo del inglés.</p>
+        <ul class="level-features">
+          <li>Aprendizaje por dominio (mínimo 80-90%)</li>
+          <li>60 rasgos de carácter cristiano</li>
+          <li>Matemáticas, Ciencias, Español e Inglés</li>
+          <li>Arte, música, deportes y lectura</li>
+        </ul>
+        <div>
+          <a href="oferta-educativa.html" class="btn btn-navy">Conocer Primaria a detalle</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel Secundaria y Preparatoria -->
+    <div class="level-panel" id="panel-secundaria">
+      <div class="level-img">
+        <span class="level-badge">12 a 18 años · Proyección internacional</span>
+        <img src="grupo-secundaria.jpeg" alt="Alumnos de secundaria y preparatoria de Bereshit Christian School">
+      </div>
+      <div class="level-content">
+        <h3>Secundaria y Preparatoria: Liderazgo y Doble Certificación</h3>
+        <p>Preparamos a los jóvenes para la universidad y la vida adulta con pensamiento crítico, cosmovisión bíblica y excelencia bilingüe. En Preparatoria ofrecemos <strong>Dual Enrollment</strong> para obtener validez tanto en México como en Estados Unidos.</p>
+        <ul class="level-features">
+          <li>Certificación México / EE. UU.</li>
+          <li>Convenciones estudiantiles regionales</li>
+          <li>Acompañamiento vocacional y espiritual</li>
+          <li>Trámites, boletas y apostillas incluidos</li>
+        </ul>
+        <div>
+          <a href="oferta-educativa.html" class="btn btn-navy">Conocer Secundaria y Prepa</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel Método ACE -->
+    <div class="level-panel" id="panel-metodo">
+      <div class="level-img">
+        <span class="level-badge">Metodología probada en 140 países</span>
+        <img src="staff-bcs.jpeg" alt="Equipo docente de Bereshit Christian School">
+      </div>
+      <div class="level-content">
+        <h3>¿Por qué el Método A.C.E. transforma a los alumnos?</h3>
+        <p>En lugar de forzar a todos los niños al mismo ritmo, aplicamos un diagnóstico inicial para ubicar a cada estudiante en su nivel exacto por materia. Así evitamos la frustración y potenciamos sus talentos individuales.</p>
+        <ul class="level-features">
+          <li>Diagnóstico personalizado al ingresar</li>
+          <li>Cuadernos de trabajo (PACEs) paso a paso</li>
+          <li>Autodisciplina y fijación de metas</li>
+          <li>Supervisión cercana y amorosa en aula</li>
+        </ul>
+        <div>
+          <a href="metodo-educativo.html" class="btn btn-navy">Descubrir el Método A.C.E.</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILARES INSTITUCIONALES -->
 <section>
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <p class="eyebrow">Bienvenida</p>
       <h2>Una escuela pensada para cada familia</h2>
       <p>Creemos que cada niño tiene el mismo derecho a la educación, pero que ningún sistema educativo es igual para todos. Por eso acompañamos a padres comprometidos con un modelo individualizado, bíblico y de dominio del aprendizaje.</p>
     </div>
-    <div class="card-grid">
+    <div class="card-grid reveal">
       <div class="card">
         <div class="card-art"><img src="foto-historica.jpg" alt="Foto histórica de Bereshit Christian School"></div>
         <div class="card-body">
           <h3>Nuestra Historia</h3>
-          <p>De una familia enseñando a sus 6 hijos en casa, a un centro educativo que hoy sirve a decenas de familias en San Miguel de Allende.</p>
+          <p>De una familia enseñando a sus 6 hijos en casa en 2013, a un centro educativo consolidado que hoy sirve a decenas de familias en San Miguel de Allende.</p>
           <a href="sobre-nosotros.html" class="card-link">Conoce nuestra historia</a>
         </div>
       </div>
@@ -89,7 +1128,7 @@
         <div class="card-art"><img src="staff-bcs.jpeg" alt="Equipo de maestros de Bereshit Christian School"></div>
         <div class="card-body">
           <h3>Método A.C.E.</h3>
-          <p>Aprendizaje individualizado por nivel de dominio, con integración bíblica en cada materia, usado en más de 140 países.</p>
+          <p>Aprendizaje individualizado por nivel de dominio, con integración bíblica en cada materia y formación del carácter, utilizado en más de 140 países.</p>
           <a href="metodo-educativo.html" class="card-link">Cómo enseñamos</a>
         </div>
       </div>
@@ -97,7 +1136,7 @@
         <div class="card-art"><img src="grupo-secundaria.jpeg" alt="Alumnos de secundaria y preparatoria de Bereshit Christian School"></div>
         <div class="card-body">
           <h3>Admisiones</h3>
-          <p>Un proceso claro, de la primera entrevista al examen diagnóstico, para encontrar el nivel exacto de cada alumno.</p>
+          <p>Un proceso transparente y cálido, desde la primera entrevista hasta el examen diagnóstico, para encontrar el nivel exacto de cada alumno.</p>
           <a href="admisiones.html" class="card-link">Ver el proceso</a>
         </div>
       </div>
@@ -112,18 +1151,53 @@
   </div>
 </div>
 
+<!-- RUTA DE ADMISIÓN PASO A PASO -->
+<section style="background:var(--cream);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Paso a paso para papás</p>
+      <h2>¿Cómo inscribir a tus hijos en Bereshit?</h2>
+      <p>Queremos que el ingreso de tu familia sea una experiencia clara, acompañada y en paz desde el primer día.</p>
+    </div>
+    <div class="steps-grid reveal">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Cita Conócenos</h3>
+        <p>Agenda una visita a nuestras instalaciones en Col. Providencia para conocer el ambiente escolar y resolver todas tus dudas.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Entrevista Familiar</h3>
+        <p>Platicamos con los papás para alinear nuestra visión formativa, valores cristianos y expectativas educativas.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Examen Diagnóstico</h3>
+        <p>Evaluamos sin estrés el nivel actual de tu hijo en cada área para ubicarlo exactamente donde aprenderá con éxito.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <h3>Inscripción y Bienvenida</h3>
+        <p>Entregamos su plan de estudios personalizado, lista de materiales y damos la bienvenida oficial a tu familia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDA ESCOLAR Y COMUNIDAD -->
 <section style="background:var(--paper);">
   <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Únete</p>
-      <h2>Sé parte de la comunidad Bereshit</h2>
+    <div class="section-head reveal">
+      <p class="eyebrow">Comunidad Viva</p>
+      <h2>Sé parte de la familia Bereshit</h2>
+      <p>Más que un salón de clases, formamos una comunidad donde los niños crecen felices, seguros y rodeados de propósito.</p>
     </div>
-    <div class="card-grid">
+    <div class="card-grid reveal">
       <div class="card">
         <div class="card-art"><img src="grupo-primaria.jpeg" alt="Alumnos de primaria de Bereshit Christian School"></div>
         <div class="card-body">
           <h3>Programas y Actividades</h3>
-          <p>De Kínder a Preparatoria, con arte, música, deportes, convenciones estudiantiles y paseos escolares.</p>
+          <p>De Kínder a Preparatoria, enriquecemos el currículo con arte, música, educación física, convenciones estudiantiles y paseos educativos.</p>
           <a href="oferta-educativa.html" class="card-link">Ver oferta educativa</a>
         </div>
       </div>
@@ -131,15 +1205,15 @@
         <div class="card-art"><img src="grupo-ninos.jpeg" alt="Alumnos de Bereshit Christian School con sus maestras"></div>
         <div class="card-body">
           <h3>Vida Escolar</h3>
-          <p>Calendario de actividades, noticias, testimonios y la vida diaria de nuestros alumnos y familias.</p>
-          <a href="vida-escolar.html" class="card-link">Ver galería</a>
+          <p>Conoce nuestro calendario de actividades, eventos familiares, testimonios y el día a día de nuestros estudiantes y maestros.</p>
+          <a href="vida-escolar.html" class="card-link">Ver galería y vida diaria</a>
         </div>
       </div>
       <div class="card">
         <div class="card-art"><img src="grupo-preescolar.jpeg" alt="Alumnos de preescolar de Bereshit Christian School"></div>
         <div class="card-body">
           <h3>Apoya el Ministerio</h3>
-          <p>Dona, sé voluntario o apadrina a un alumno. Hay muchas formas de sumarte a esta misión.</p>
+          <p>Dona, participa como voluntario o apadrina la educación de un alumno. Hay muchas maneras de sumarte a esta misión.</p>
           <a href="apoya-ministerio.html" class="card-link">Cómo ayudar</a>
         </div>
       </div>
@@ -147,27 +1221,92 @@
   </div>
 </section>
 
+<!-- PREGUNTAS FRECUENTES DE LOS PADRES -->
 <section>
   <div class="wrap">
-    <div class="split">
-      <div class="art art-2">🌎</div>
-      <div>
-        <p class="eyebrow">Alcance</p>
-        <h2>Una misión que cruza fronteras</h2>
-        <p style="color:#5A5245">Además de servir a familias en México, nuestra meta es alcanzar donativos, voluntarios y misioneros de Estados Unidos y del mundo, e informar mensualmente lo que Dios está haciendo en nuestra comunidad — en español y en inglés.</p>
-        <p style="color:#5A5245">Que nosotros nos encarguemos de las boletas, apostillas y diplomas. Tú enfócate en tus hijos.</p>
-        <a href="contacto.html" class="btn btn-teal">Contáctanos</a>
+    <div class="section-head reveal">
+      <p class="eyebrow">Claridad para tu decisión</p>
+      <h2>Preguntas frecuentes de los papás</h2>
+      <p>Resolvemos las dudas más importantes que tienen las familias al conocer nuestro modelo educativo.</p>
+    </div>
+
+    <div class="faq-list reveal">
+      <div class="faq-item open">
+        <button class="faq-question" type="button">
+          <span>¿Los estudios tienen validez oficial para continuar a la universidad en México o EE. UU.?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Sí. Nosotros nos encargamos de toda la gestión de boletas, certificados, apostillas y diplomas. Gracias a nuestros convenios y modalidad de <em>Dual Enrollment</em>, los egresados cuentan con documentación válida para ingresar a universidades tanto en México como en Estados Unidos y el extranjero.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span>¿Qué pasa si mi hijo viene de una escuela tradicional o tiene bajo nivel de inglés?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Esa es una de las mayores fortalezas del sistema A.C.E. Al ingresar, realizamos un diagnóstico académico para detectar cualquier laguna previa y nivelar al alumno a su propio ritmo, acompañándolo paso a paso en su transición al inglés sin presionarlo ni compararlo con otros compañeros.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span>¿Los alumnos conviven y trabajan en equipo además de su trabajo individual?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          ¡Por supuesto! Aunque el avance en materias troncales es personalizado, todos los días compartimos devocionales, deportes, arte, música, proyectos grupales, recreos, paseos escolares y convenciones estudiantiles donde desarrollan amistades sanas y trabajo en equipo.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span>¿Cómo puedo conocer las instalaciones y platicar con la dirección?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Puedes agendar una cita directamente desde el botón <strong>"Agendar visita"</strong> en esta página o llamarnos al <strong>415 133 0051</strong>. Nos dará mucho gusto recibir a tu familia en Fray Pedro de Gante 42, Col. Providencia.
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="cta-band wrap" style="max-width:1180px;">
-  <div>
-    <h2>Inscripciones abiertas</h2>
-    <p>Contáctanos hoy para saber si Bereshit Christian School es el lugar correcto para tu familia.</p>
+<!-- ALCANCE INTERNACIONAL -->
+<section style="padding-top: 20px;">
+  <div class="wrap">
+    <div class="split reveal">
+      <div class="art">
+        🌎
+        <span>México · EE. UU. · El Mundo</span>
+      </div>
+      <div>
+        <p class="eyebrow">Alcance y Respaldo</p>
+        <h2>Una misión que cruza fronteras</h2>
+        <p style="color:var(--muted);">Además de servir a las familias de San Miguel de Allende, vinculamos nuestra labor con ministerios, voluntarios y donadores de Estados Unidos y del mundo, compartiendo lo que Dios está haciendo en cada generación.</p>
+        <p style="color:var(--muted); font-weight:600;">Nosotros nos encargamos de las boletas, apostillas y diplomas. Tú enfócate en disfrutar y guiar el corazón de tus hijos.</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:20px;">
+          <a href="contacto.html" class="btn btn-teal">Contáctanos</a>
+          <a href="apoya-ministerio.html" class="btn btn-navy">Conoce el ministerio</a>
+        </div>
+      </div>
+    </div>
   </div>
-  <a href="contacto.html" class="btn" style="background:#fff;color:var(--terracotta);">Escríbenos</a>
+</section>
+
+<div class="wrap">
+  <div class="cta-band reveal">
+    <div>
+      <h2>Inscripciones abiertas</h2>
+      <p>Agenda una visita hoy mismo para descubrir si Bereshit Christian School es el hogar educativo ideal para tu familia.</p>
+    </div>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <button type="button" class="btn" id="bottomScheduleBtn" style="background:#fff; color:var(--terracotta);">📅 Agendar cita ahora</button>
+      <a href="contacto.html" class="btn btn-outline">Ir a Contacto</a>
+    </div>
+  </div>
 </div>
 
 <footer class="site">
@@ -175,10 +1314,10 @@
     <div class="footer-grid">
       <div>
         <h4 style="color:var(--gold)">Bereshit Christian School</h4>
-        <p style="color:#C9C1AE;font-size:.92rem;max-width:32ch;">Educación cristiana bilingüe con el método A.C.E., en San Miguel de Allende, Guanajuato.</p>
+        <p style="color:#C9C1AE;font-size:.92rem;max-width:32ch;">Educación cristiana bilingüe con el método A.C.E., formando carácter y excelencia en San Miguel de Allende, Guanajuato.</p>
         <div class="social-row" style="margin-top:14px;">
-          <a href="https://www.facebook.com/Bereshit.Christian.School/" aria-label="Facebook"><img src="facebook.png" alt="Facebook"></a>
-          <a href="https://instagram.com/bereshit.christian.school" aria-label="Instagram"><img src="instagram.svg" alt="Instagram"></a>
+          <a href="https://www.facebook.com/Bereshit.Christian.School/" target="_blank" rel="noopener" aria-label="Facebook"><img src="facebook.png" alt="Facebook"></a>
+          <a href="https://instagram.com/bereshit.christian.school" target="_blank" rel="noopener" aria-label="Instagram"><img src="instagram.svg" alt="Instagram"></a>
         </div>
       </div>
       <div>
@@ -195,18 +1334,143 @@
         <a href="contacto.html">Contacto</a>
       </div>
       <div>
-        <h4>Contacto</h4>
-        <a href="mailto:bereshitchs.snm@gmail.com">bereshitchs.snm@gmail.com</a>
-        <a href="tel:4151330051">415 133 0051</a>
-        <a href="#">Fray Pedro de Gante 42, Providencia, San Miguel de Allende</a>
+        <h4>Contacto directo</h4>
+        <a href="mailto:bereshitchs.snm@gmail.com">✉️ bereshitchs.snm@gmail.com</a>
+        <a href="tel:4151330051">📞 415 133 0051</a>
+        <a href="https://www.google.com/maps?q=Fray+Pedro+de+Gante+42,+Providencia,+San+Miguel+de+Allende" target="_blank" rel="noopener">📍 Fray Pedro de Gante 42, Providencia, San Miguel de Allende</a>
       </div>
     </div>
     <div class="foot-bottom">
       <span>© 2026 Bereshit Christian School — Todos los derechos reservados.</span>
-      <span>Sitio en construcción · versión en inglés próximamente</span>
+      <span>Educación con propósito eterno · San Miguel de Allende, Gto.</span>
     </div>
   </div>
 </footer>
+
+<!-- BOTÓN FLOTANTE PARA PAPÁS -->
+<button type="button" class="floating-visit-btn" id="floatingScheduleBtn" aria-label="Solicitar informes o agendar cita">
+  <span>💬</span> Informes / Agendar Visita
+</button>
+
+<!-- MODAL INTERACTIVO DE INFORMES Y CITAS -->
+<div class="visit-modal-backdrop" id="visitModal" role="dialog" aria-modal="true" aria-labelledby="vmTitle">
+  <div class="visit-modal">
+    <div class="vm-head">
+      <div>
+        <p class="eyebrow" style="margin-bottom:4px;">Atención a Padres</p>
+        <h3 id="vmTitle">Solicita informes o agenda tu visita</h3>
+      </div>
+      <button type="button" class="vm-close" id="closeVisitModal" aria-label="Cerrar">✕</button>
+    </div>
+    <p style="font-size:0.9rem; color:var(--muted); margin:0 0 16px;">Compártenos estos breves datos y te atenderemos personalmente por WhatsApp o correo electrónico.</p>
+
+    <form id="visitForm">
+      <div class="vm-field">
+        <label for="parentName">Nombre de mamá o papá</label>
+        <input type="text" id="parentName" required placeholder="Ej. Laura Gómez">
+      </div>
+      <div class="vm-field">
+        <label for="childLevel">Nivel de interés para tu hijo(a)</label>
+        <select id="childLevel">
+          <option value="Preescolar (Kínder)">🌱 Preescolar (Kínder)</option>
+          <option value="Primaria">📘 Primaria</option>
+          <option value="Secundaria">🔬 Secundaria</option>
+          <option value="Preparatoria (Dual Enrollment)">🎓 Preparatoria (Doble Certificación)</option>
+          <option value="Varios niveles (Hermanos)">👨‍👩‍👧‍👦 Varios niveles (Hermanos)</option>
+        </select>
+      </div>
+      <div class="vm-field">
+        <label for="visitNotes">¿Qué te gustaría conocer o qué día prefieres visitarnos?</label>
+        <textarea id="visitNotes" rows="2" placeholder="Ej. Me gustaría conocer colegiaturas y agendar una visita esta semana..."></textarea>
+      </div>
+      <div class="vm-actions">
+        <button type="submit" class="btn btn-gold">📲 Enviar por WhatsApp</button>
+        <button type="button" id="sendVisitEmail" class="btn btn-navy">✉️ Enviar por Correo</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  // 1. Pestañas interactivas de niveles educativos
+  const levelTabs = document.querySelectorAll('.level-tab');
+  const levelPanels = document.querySelectorAll('.level-panel');
+
+  levelTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      levelTabs.forEach(t => t.classList.remove('active'));
+      levelPanels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      const target = document.getElementById('panel-' + tab.dataset.level);
+      if (target) target.classList.add('active');
+    });
+  });
+
+  // 2. Acordeón de Preguntas Frecuentes (FAQ)
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // 3. Modal de Citas e Informes para Padres
+  const visitModal = document.getElementById('visitModal');
+  function openModal(e) {
+    if (e) e.preventDefault();
+    visitModal.classList.add('open');
+  }
+  function closeModal() {
+    visitModal.classList.remove('open');
+  }
+
+  document.getElementById('heroScheduleBtn').addEventListener('click', openModal);
+  document.getElementById('bottomScheduleBtn').addEventListener('click', openModal);
+  document.getElementById('floatingScheduleBtn').addEventListener('click', openModal);
+  document.getElementById('topScheduleLink').addEventListener('click', openModal);
+  document.getElementById('closeVisitModal').addEventListener('click', closeModal);
+  visitModal.addEventListener('click', (e) => { if (e.target === visitModal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  // Enviar solicitud por WhatsApp al número del colegio (415 133 0051)
+  document.getElementById('visitForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('parentName').value.trim();
+    const level = document.getElementById('childLevel').value;
+    const notes = document.getElementById('visitNotes').value.trim();
+
+    let msg = `Hola Bereshit Christian School, mi nombre es *${name}*.\nMe interesa recibir informes / agendar una visita para el nivel: *${level}*.`;
+    if (notes) msg += `\n\n*Comentario:* ${notes}`;
+
+    window.open(`https://wa.me/5214151330051?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+    closeModal();
+  });
+
+  // Enviar solicitud por Correo
+  document.getElementById('sendVisitEmail').addEventListener('click', () => {
+    const name = document.getElementById('parentName').value.trim() || 'Padre de familia';
+    const level = document.getElementById('childLevel').value;
+    const notes = document.getElementById('visitNotes').value.trim();
+
+    const subject = encodeURIComponent(`Solicitud de Informes / Visita — ${name} (${level})`);
+    const body = encodeURIComponent(`Nombre: ${name}\nNivel de interés: ${level}\n\nMensaje:\n${notes}`);
+    window.location.href = `mailto:bereshitchs.snm@gmail.com?subject=${subject}&body=${body}`;
+    closeModal();
+  });
+
+  // 4. Animación suave al hacer scroll (Scroll Reveal)
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
